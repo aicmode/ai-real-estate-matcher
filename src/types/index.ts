@@ -1,7 +1,7 @@
 /**
  * アプリ全体で共有するドメイン型。
  * Prisma のモデル型を直接 UI に流さず、この DTO を介することで
- * DB (SQLite -> PostgreSQL) の差し替え時に UI 側を変更せずに済む。
+ * DB (PostgreSQL / Supabase) の実装差し替え時に UI 側を変更せずに済む。
  */
 
 /** 物件 DTO (JSON 文字列カラムは string[] に変換済み) */

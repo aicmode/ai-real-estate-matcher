@@ -51,15 +51,17 @@
 | フレームワーク | Next.js 16 (App Router) / React 19 |
 | 言語 | TypeScript（strict） |
 | スタイリング | Tailwind CSS v4（`@theme` によるデザイントークン） |
-| データベース | SQLite + Prisma ORM 6 |
+| データベース | PostgreSQL (Supabase) + Prisma ORM 6 |
 | バリデーション | Zod |
 | アイコン | lucide-react |
 | AI 連携（任意） | Anthropic Claude API（`@anthropic-ai/sdk`） |
+| ホスティング | Vercel |
 
 ### 設計上のポイント
 
 - **ロジックと UI の分離** — スコア計算は `src/lib/matching/` に集約し、UI コンポーネントには計算処理を書いていません
 - **DB 差し替えを想定した DTO 層** — Prisma のモデル型を UI に直接流さず、`src/lib/repositories/` で DTO へ変換
+- **ビルドと DB 操作の分離** — `npm run build` は Prisma Client 生成 + Next.js ビルドのみ。migration / seed はビルドから切り離した独立コマンド
 - **AI プロバイダの抽象化** — `RecommendationProvider` インターフェースにより、ルールベース / LLM を差し替え可能
 - **APIキー不要で完全動作** — 既定はルールベース生成。キーが無くてもエラーにならず、LLM 呼び出しが失敗した場合も自動でフォールバック
 
@@ -69,9 +71,9 @@
 
 ```
 prisma/
-  schema.prisma              # DBスキーマ（PostgreSQL移行を想定した設計）
+  schema.prisma              # DBスキーマ（PostgreSQL / Supabase）
   seed.ts                    # 架空物件36件のseedデータ
-  migrations/                # マイグレーション履歴
+  migrations/                # マイグレーション履歴（PostgreSQL）
 scripts/
   generate-property-images.mjs  # 物件プレースホルダー画像(SVG)の生成
 src/
@@ -185,6 +187,9 @@ src/
 
 - Node.js 20 以上（開発は v24 で確認）
 - npm
+- PostgreSQL データベース（Supabase を推奨。ローカル PostgreSQL でも可）
+
+ローカル開発でも本番と同じ PostgreSQL に接続する構成です。SQLite は使用しません。
 
 ### 手順
 
@@ -192,10 +197,13 @@ src/
 # 1. 依存関係のインストール（postinstall で prisma generate も実行されます）
 npm install
 
-# 2. 環境変数の用意
+# 2. 環境変数の用意（.env は Git 追跡対象外）
 cp .env.example .env
+#    → .env に POSTGRES_PRISMA_URL / POSTGRES_URL_NON_POOLING を設定する
+#      値は Vercel（Supabase 連携）または Supabase ダッシュボードから取得
+#      Vercel CLI を使う場合: vercel env pull .env
 
-# 3. DB の作成（マイグレーション実行）
+# 3. マイグレーション適用（ローカル開発用）
 npm run db:migrate
 
 # 4. seed データの投入（架空物件 36 件）
@@ -207,18 +215,33 @@ npm run dev
 
 → http://localhost:3000 を開き、「デモ条件を入力」ボタンからすぐに動作を確認できます。
 
+> **注意**: Prisma CLI が読み込む環境変数ファイルは `.env` です（`.env.local` は読みません）。
+
 ### npm scripts
 
 | コマンド | 内容 |
 | --- | --- |
 | `npm run dev` | 開発サーバー起動 |
-| `npm run build` / `npm start` | 本番ビルド / 本番サーバー起動 |
+| `npm run build` | Prisma Client 生成 + Next.js 本番ビルド（**DB へは書き込まない**） |
+| `npm start` | 本番サーバー起動 |
 | `npm run typecheck` | TypeScript の型チェック |
 | `npm run lint` | ESLint |
-| `npm run db:migrate` | マイグレーション作成・適用 |
+| `npm run db:generate` | Prisma Client の生成のみ |
+| `npm run db:migrate` | **ローカル開発用**。スキーマ差分から migration を作成して適用（`prisma migrate dev`） |
+| `npm run db:migrate:deploy` | **本番用**。既存の migration ファイルを適用するだけ（`prisma migrate deploy`） |
+| `npm run db:migrate:status` | 適用済み migration の確認 |
 | `npm run db:seed` | seed データ投入（実行前に既存データを削除する冪等な実装） |
-| `npm run db:reset` | DB をリセットして再マイグレーション + seed |
+| `npm run db:reset` | DB をリセットして再マイグレーション + seed（**本番では実行禁止**） |
 | `npm run db:studio` | Prisma Studio で DB を GUI 確認 |
+
+#### `db:migrate` と `db:migrate:deploy` の違い
+
+| | `db:migrate`（`prisma migrate dev`） | `db:migrate:deploy`（`prisma migrate deploy`） |
+| --- | --- | --- |
+| 用途 | ローカル開発 | 本番 / Preview 環境 |
+| 動作 | schema の差分から migration ファイルを**新規生成**して適用 | `prisma/migrations/` にある migration を**適用するだけ** |
+| DB リセット | 差分が解決できない場合、DB を drop して作り直すことがある | 一切行わない |
+| 本番 DB への実行 | **禁止**（データ消失の恐れ） | これを使う |
 
 ---
 
@@ -246,10 +269,19 @@ node scripts/generate-property-images.mjs   # 画像を再生成する場合
 
 | 変数 | 必須 | 説明 |
 | --- | --- | --- |
-| `DATABASE_URL` | ✅ | 開発時は `file:./dev.db`（SQLite） |
+| `POSTGRES_PRISMA_URL` | ✅ | アプリ実行時（Prisma Client）の接続。Supabase の Connection Pooler 経由 |
+| `POSTGRES_URL_NON_POOLING` | ✅ | migration / introspect 用の直接接続。プーラーを経由しない |
 | `AI_PROVIDER` | – | `claude` を指定すると LLM 生成を試みる。未設定ならルールベース |
 | `ANTHROPIC_API_KEY` | – | Claude API キー。未設定ならルールベースのまま動作 |
 | `ANTHROPIC_MODEL` | – | 既定は `claude-opus-5` |
+
+DB 接続用の 2 変数は、Vercel Marketplace の Supabase 連携を有効にすると
+Vercel プロジェクトへ自動登録されます（Supabase が発行するその他の変数は本アプリでは使用しません）。
+
+**接続文字列・パスワード・API キーは、コード・README・`.env.example` に一切書きません。**
+`.env` は `.gitignore` 済みで、Git 追跡対象外です。
+また、Prisma の接続情報は Server Component / Route Handler 内でのみ使用し、
+`NEXT_PUBLIC_` 系の変数やクライアントコンポーネントへは渡していません。
 
 `AI_PROVIDER=claude` かつ API キーがある場合のみ LLM を呼び出し、
 **呼び出しに失敗した場合は自動でルールベースの推薦理由にフォールバック**します。
@@ -257,23 +289,89 @@ API キーが無い状態でもアプリ全体が問題なく動作します。
 
 ---
 
-## PostgreSQL / Supabase への移行
+## Supabase 接続の構成
 
-将来的な移行を前提に以下の設計としています。
+`prisma/schema.prisma` の datasource は次の構成です。
 
-1. `prisma/schema.prisma` の `datasource.provider` を `postgresql` に変更
-2. `DATABASE_URL` を PostgreSQL / Supabase の接続文字列に差し替え
-3. `npm run db:migrate` を実行
+```prisma
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL")       // アプリ実行時（Pooler 経由）
+  directUrl = env("POSTGRES_URL_NON_POOLING")  // migration 用の直接接続
+}
+```
 
-配列データ（おすすめポイント・注意点・タグ）は SQLite に配列型が無いため JSON 文字列で保持し、
+- **`url`（`POSTGRES_PRISMA_URL`）** — Supabase の Connection Pooler（PgBouncer）宛。
+  サーバーレス環境ではリクエストごとに接続が増えるため、プーラー経由が前提です。
+- **`directUrl`（`POSTGRES_URL_NON_POOLING`）** — `prisma migrate` / `prisma db push` など、
+  プリペアドステートメントや DDL を扱う処理で使われます。プーラー経由では正しく動作しないため分離しています。
+
+Prisma Client は `src/lib/db.ts` でシングルトン化しており、開発時のホットリロードや
+サーバーレス環境でコネクションが増え続けるのを防いでいます。
+
+配列データ（おすすめポイント・注意点・タグ）は DB 依存を避けるため JSON 文字列で保持し、
 `src/lib/repositories/property-repository.ts` の `toPropertyDTO()` で `string[]` に変換しています。
-PostgreSQL 移行後に `String[]` へ変更する場合も、**修正はこの 1 ファイルのみ**で済みます。
+将来 `String[]` へ変更する場合も、**修正はこの 1 ファイルのみ**で済みます。
+
+---
+
+## Vercel へのデプロイ
+
+### ビルドと DB 操作は分離しています
+
+`npm run build` は **Prisma Client の生成と Next.js のビルドのみ**を行い、
+migration や seed は実行しません。
+Preview Deploy や再 Deploy のたびに DB が変更される事故を避けるためです。
+
+| | 実行内容 | いつ実行するか |
+| --- | --- | --- |
+| ビルド | `prisma generate` + `next build` | Vercel が Deploy ごとに自動実行 |
+| DB 準備 | `db:migrate:deploy` + `db:seed` | スキーマを変更したときに**手動で 1 回** |
+
+### 手順
+
+1. Vercel Marketplace から Supabase Database を作成し、Vercel プロジェクトと連携する
+   （`POSTGRES_PRISMA_URL` / `POSTGRES_URL_NON_POOLING` が自動登録されます）
+2. ローカルへ接続情報を取り込む
+
+   ```bash
+   vercel env pull .env
+   ```
+
+3. 本番 DB へスキーマと seed を投入する（ローカルから 1 回だけ実行）
+
+   ```bash
+   npm run db:migrate:deploy   # migration の適用（prisma/migrations を流すだけ）
+   npm run db:seed             # 架空物件 36 件を投入
+   npm run db:migrate:status   # 適用状況の確認
+   ```
+
+4. Vercel へデプロイする（Git 連携または `vercel --prod`）
+
+Vercel 側の Build Command / Install Command は既定のままで動作します
+（`npm install` の `postinstall`、および `npm run build` の双方で `prisma generate` が走ります）。
+
+### ビルド時の DB アクセスについて
+
+DB を参照するルートには `export const dynamic = "force-dynamic"` を指定し、
+リクエスト時レンダリングにしています。
+ビルド時に DB へ接続してビルドが失敗すること、および
+seed 済みデータを前提に静的生成されてしまうことを防ぐためです。
+
+| ルート | 指定 | 理由 |
+| --- | --- | --- |
+| `src/app/page.tsx` | `force-dynamic` | エリア一覧・登録件数を DB から取得 |
+| `src/app/properties/page.tsx` | `force-dynamic` | 物件一覧を DB から取得 |
+| `src/app/properties/[id]/page.tsx` | `force-dynamic` | 物件詳細を DB から取得 |
+| `src/app/api/match/route.ts` | `force-dynamic` + `runtime = "nodejs"` | マッチング時に DB を参照 |
+
+DB を参照しないコンポーネント・ページには指定していません。
 
 ---
 
 ## 今後の拡張案
 
-- **DB**: Supabase / PostgreSQL への移行、全文検索、物件のCRUD管理
+- **DB**: 全文検索、物件の CRUD 管理画面、Supabase Row Level Security の活用
 - **地図**: Google Maps API による地図表示・通勤時間ベースのスコアリング（緯度経度は seed 済み）
 - **外部連携**: 不動産物件 API との連携によるリアルタイム物件取得
 - **AI**: LLM による推薦理由の高度化、条件のヒアリング（自然言語入力からの条件抽出）

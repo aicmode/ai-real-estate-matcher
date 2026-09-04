@@ -585,7 +585,7 @@ async function main() {
       internet: p.internet,
       hasAutoLock: p.hasAutoLock,
       hasBathToilet: p.hasBathToilet,
-      // SQLite には配列型が無いため JSON 文字列として保存する
+      // 配列は DB 非依存に保つため JSON 文字列として保存する
       appealPoints: JSON.stringify(p.appealPoints),
       cautionPoints: JSON.stringify(p.cautionPoints),
       tags: JSON.stringify(p.tags),

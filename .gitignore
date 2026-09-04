@@ -42,6 +42,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Prisma (SQLite のローカル DB はコミットしない)
+# Prisma (旧 SQLite 時代のローカル DB ファイルが残っていてもコミットしない)
 prisma/*.db
 prisma/*.db-journal

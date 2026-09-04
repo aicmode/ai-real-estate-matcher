@@ -1,10 +1,8 @@
 // AI Real Estate Matcher - データベーススキーマ
 //
-// 開発時は SQLite を利用しているが、将来的な Supabase / PostgreSQL への移行を
-// 想定して以下の方針で設計している。
-//   - SQLite 固有の型・機能を使わない (enum は使わず String + 定数で表現)
+// 開発・本番ともに PostgreSQL (Supabase) を利用する。
+//   - DB 固有の型・機能を使わない (enum は使わず String + 定数で表現)
 //   - 配列は JSON 文字列として保持し、リポジトリ層で string[] に変換する
-//     (PostgreSQL へ移行する際は `String[]` / `Json` に置き換えるだけで済む)
 //   - アプリケーションコードは Prisma のモデル型ではなく DTO (src/types) に依存する
 
 generator client {
@@ -12,9 +10,11 @@ generator client {
 }
 
 datasource db {
-  // 移行時は provider = "postgresql" に変更し DATABASE_URL を差し替えるだけでよい
-  provider = "sqlite"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  // 通常の Prisma Client 実行時は Supabase の Connection Pooler 経由 (PgBouncer)
+  url       = env("POSTGRES_PRISMA_URL")
+  // migrate / introspect など直接接続が必要な処理はプーラーを経由しない
+  directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
 /// 物件マスタ
@@ -53,7 +53,7 @@ model Property {
   hasAutoLock     Boolean @default(false)
   hasBathToilet   Boolean @default(true) // バス・トイレ別
 
-  // 紹介文 (JSON 文字列の配列。PostgreSQL 移行時は String[] に置換可能)
+  // 紹介文 (JSON 文字列の配列。リポジトリ層で string[] へ変換する)
   appealPoints   String @default("[]")
   cautionPoints  String @default("[]")
   tags           String @default("[]")

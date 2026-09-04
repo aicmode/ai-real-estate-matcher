@@ -6,9 +6,8 @@ import type { Property } from "@/types";
 /**
  * Prisma のレコードをアプリ用 DTO へ変換する。
  *
- * SQLite には配列型が無いため JSON 文字列で保持しているカラムを
- * ここで string[] に戻す。PostgreSQL へ移行して String[] にした際は
- * この関数だけを直せばよく、UI 側の変更は不要。
+ * JSON 文字列として保持している配列カラムを、ここで string[] に戻す。
+ * DB のカラム表現を変更する場合もこの関数だけを直せばよく、UI 側の変更は不要。
  */
 export function toPropertyDTO(record: PrismaProperty): Property {
   return {
