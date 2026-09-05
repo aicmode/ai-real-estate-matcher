@@ -7,7 +7,7 @@ import type { CriterionScore } from "@/types";
 /**
  * スコア内訳。
  * 「なぜこのマッチ度なのか」を評価軸ごとに開示し、
- * AI 推薦のブラックボックス感を減らすためのコンポーネント。
+ * 判定ロジックのブラックボックス感を抑え、スコアの根拠を可視化するコンポーネント。
  */
 export function ScoreBreakdown({
   breakdown,

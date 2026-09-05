@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default async function PropertiesPage() {
   const properties = await findPublishedProperties();
 
-  const areaSummary = [...new Set(properties.map((p) => p.prefecture))].join("・");
+  const prefectureCount = new Set(properties.map((p) => p.prefecture)).size;
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
@@ -24,7 +24,7 @@ export default async function PropertiesPage() {
         <p className="mt-2 text-[13px] leading-relaxed text-[var(--color-ink-muted)] sm:text-sm">
           データベースに登録されている
           <span className="tabular font-bold text-navy-800"> {properties.length} </span>
-          件の物件（{areaSummary}）です。
+          件の架空物件（{prefectureCount === 47 ? "全国47都道府県" : `${prefectureCount}都道府県`}）です。
           マッチング画面で希望条件を入力すると、これらの物件がスコアリングされます。
         </p>
       </header>

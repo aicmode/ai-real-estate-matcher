@@ -16,7 +16,8 @@ import type { ComponentType } from "react";
 
 import { Button } from "@/components/ui/Button";
 import { Card, CardHeader } from "@/components/ui/Card";
-import { Field, RangeControl, SegmentedControl, Select } from "@/components/ui/Field";
+import { Field, LabeledGroup, RangeControl, SegmentedControl, Select } from "@/components/ui/Field";
+import { RENT_RANGE } from "@/lib/validation";
 import { cn } from "@/lib/cn";
 import { formatManYen } from "@/lib/format";
 import { LAYOUT_OPTIONS } from "@/lib/matching/constants";
@@ -94,10 +95,11 @@ export function SearchForm({
             variant="outline"
             size="sm"
             onClick={onDemo}
+            disabled={loading}
             className="shrink-0"
           >
             <Wand2 className="size-4" aria-hidden="true" />
-            デモ条件を入力
+            デモ地域を選ぶ
           </Button>
         }
       />
@@ -163,8 +165,8 @@ export function SearchForm({
                     id={id}
                     value={value.maxRent}
                     onChange={(next) => patch("maxRent", next)}
-                    min={30000}
-                    max={200000}
+                    min={RENT_RANGE.min}
+                    max={RENT_RANGE.max}
                     step={1000}
                     format={formatManYen}
                   />
@@ -239,36 +241,36 @@ export function SearchForm({
           <section className="lg:col-span-2">
             <SectionTitle icon={Building}>生活条件</SectionTitle>
             <div className="grid gap-4 sm:grid-cols-3">
-              <Field label="駐車場">
-                {() => (
+              <LabeledGroup label="駐車場">
+                {(labelId) => (
                   <SegmentedControl
-                    ariaLabel="駐車場"
+                    labelledBy={labelId}
                     value={value.parking}
                     onChange={(next) => patch("parking", next)}
                     options={LEVEL_OPTIONS}
                   />
                 )}
-              </Field>
-              <Field label="ペット">
-                {() => (
+              </LabeledGroup>
+              <LabeledGroup label="ペット">
+                {(labelId) => (
                   <SegmentedControl
-                    ariaLabel="ペット"
+                    labelledBy={labelId}
                     value={value.pet}
                     onChange={(next) => patch("pet", next)}
                     options={LEVEL_OPTIONS}
                   />
                 )}
-              </Field>
-              <Field label="在宅ワーク適性">
-                {() => (
+              </LabeledGroup>
+              <LabeledGroup label="在宅ワーク適性">
+                {(labelId) => (
                   <SegmentedControl
-                    ariaLabel="在宅ワーク適性"
+                    labelledBy={labelId}
                     value={value.remoteWork}
                     onChange={(next) => patch("remoteWork", next)}
                     options={REMOTE_OPTIONS}
                   />
                 )}
-              </Field>
+              </LabeledGroup>
             </div>
             <p className="mt-2 flex items-start gap-1.5 text-[11px] leading-relaxed text-[var(--color-ink-subtle)]">
               <Info className="mt-0.5 size-3 shrink-0" aria-hidden="true" />

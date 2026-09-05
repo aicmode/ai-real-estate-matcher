@@ -43,6 +43,9 @@ export default async function HomePage() {
           <span className="size-1.5 rounded-full bg-accent-500" aria-hidden="true" />
           登録物件 {totalCount} 件で稼働中
         </p>
+        <p className="mb-4 text-[12px] font-semibold text-[var(--color-ink-muted)]">
+          {areas.length === 47 ? "全国47都道府県" : `${areas.length}都道府県`}の架空物件データに対応
+        </p>
         <h1 className="max-w-3xl text-2xl leading-snug font-bold tracking-tight text-navy-900 sm:text-4xl sm:leading-tight">
           条件を入力するだけで、
           <br />
