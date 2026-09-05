@@ -60,7 +60,7 @@ export function PropertyDetailModal({
             <ScoreRing score={result.score} size="lg" />
             <div className="min-w-0">
               <p className="text-[11px] font-bold tracking-wide text-[var(--color-ink-subtle)] uppercase">
-                AIによる推薦理由
+                推薦理由
               </p>
               <p className="mt-1 text-[13px] leading-relaxed text-navy-900">
                 {recommendation.summary}

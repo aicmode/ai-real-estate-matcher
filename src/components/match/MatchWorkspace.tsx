@@ -4,13 +4,14 @@ import { useCallback, useMemo, useRef, useState } from "react";
 import { AlertCircle, Loader2, Sparkles } from "lucide-react";
 
 import { Button } from "@/components/ui/Button";
+import { Modal } from "@/components/ui/Modal";
 import { Card } from "@/components/ui/Card";
 import { CompareModal } from "./CompareModal";
 import { CompareTray } from "./CompareTray";
 import { PropertyDetailModal } from "./PropertyDetailModal";
 import { ResultsSection } from "./ResultsSection";
 import { SearchForm, type AreaOption } from "./SearchForm";
-import { DEFAULT_CRITERIA, DEMO_CRITERIA } from "@/lib/validation";
+import { DEFAULT_CRITERIA, DEMO_PRESETS } from "@/lib/validation";
 import type { MatchCriteria, MatchResponse } from "@/types";
 
 const MAX_COMPARE = 3;
@@ -21,6 +22,7 @@ const MAX_COMPARE = 3;
  * ここでは入力・結果・比較選択の状態管理だけを担当する。
  */
 export function MatchWorkspace({ areas }: { areas: AreaOption[] }) {
+  const [demoOpen, setDemoOpen] = useState(false);
   const [criteria, setCriteria] = useState<MatchCriteria>(DEFAULT_CRITERIA);
   const [data, setData] = useState<MatchResponse | null>(null);
   const [loading, setLoading] = useState(false);
@@ -69,10 +71,12 @@ export function MatchWorkspace({ areas }: { areas: AreaOption[] }) {
     }
   }, []);
 
-  const handleDemo = useCallback(() => {
-    setCriteria(DEMO_CRITERIA);
-    void search(DEMO_CRITERIA);
-  }, [search]);
+  const handleDemo = () => setDemoOpen(true);
+  const selectDemo = (next: MatchCriteria) => {
+    setDemoOpen(false);
+    setCriteria({ ...next });
+    void search(next);
+  };
 
   const toggleCompare = useCallback((id: string) => {
     setCompareIds((current) => {
@@ -155,11 +159,21 @@ export function MatchWorkspace({ areas }: { areas: AreaOption[] }) {
               </p>
             </div>
             <Button type="button" variant="outline" onClick={handleDemo}>
-              デモ条件を入力して検索する
+              デモ地域を選んで検索する
             </Button>
           </Card>
         )}
       </div>
+
+      <Modal open={demoOpen} onClose={() => setDemoOpen(false)} title="デモ地域を選択" subtitle="地域を選ぶと条件を入力して検索します。掲載物件はすべて架空です。">
+        <div className="grid gap-3 sm:grid-cols-2">
+          {DEMO_PRESETS.map((preset) => (
+            <Button key={preset.label} type="button" variant="outline" disabled={loading || !areas.some((area) => area.prefecture === preset.criteria.prefecture)} onClick={() => selectDemo(preset.criteria)} className="min-h-11 justify-start">
+              {preset.label}
+            </Button>
+          ))}
+        </div>
+      </Modal>
 
       <CompareTray
         selected={selectedResults}

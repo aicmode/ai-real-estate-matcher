@@ -36,6 +36,31 @@ export function Field({
   );
 }
 
+/**
+ * radiogroup のように htmlFor で紐づけられないコントロール向けの行。
+ * label 要素だと参照先のないラベルになるため、見た目は保ったまま
+ * aria-labelledby で見出しテキストとコントロールを関連付ける。
+ */
+export function LabeledGroup({
+  label,
+  children,
+  className,
+}: {
+  label: string;
+  children: (labelId: string) => ReactNode;
+  className?: string;
+}) {
+  const labelId = useId();
+  return (
+    <div className={cn("flex flex-col gap-1.5", className)}>
+      <p id={labelId} className="text-[13px] font-semibold text-navy-800">
+        {label}
+      </p>
+      {children(labelId)}
+    </div>
+  );
+}
+
 const CONTROL_BASE =
   "h-11 w-full rounded-lg border border-[var(--color-line-strong)] bg-white px-3 text-sm text-navy-900 transition-colors hover:border-navy-300 focus:border-brand-500 focus:outline-none";
 
@@ -126,16 +151,20 @@ export function SegmentedControl<T extends string>({
   onChange,
   options,
   ariaLabel,
+  labelledBy,
 }: {
   value: T;
   onChange: (value: T) => void;
   options: { value: T; label: string }[];
-  ariaLabel: string;
+  /** 画面上にラベルが無い場合に使う。可視ラベルがあるなら labelledBy を優先する。 */
+  ariaLabel?: string;
+  labelledBy?: string;
 }) {
   return (
     <div
       role="radiogroup"
-      aria-label={ariaLabel}
+      aria-label={labelledBy ? undefined : ariaLabel}
+      aria-labelledby={labelledBy}
       className="grid gap-1 rounded-lg border border-[var(--color-line-strong)] bg-navy-50/60 p-1"
       style={{ gridTemplateColumns: `repeat(${options.length}, minmax(0, 1fr))` }}
     >
