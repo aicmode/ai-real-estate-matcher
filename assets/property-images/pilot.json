@@ -1,0 +1,82 @@
+[
+  {
+    "propertyId": "demo-jp-01-a",
+    "propertyName": "【架空】リュミナステラス札幌 301号室",
+    "prefecture": "北海道",
+    "city": "札幌市",
+    "propertyType": "駅近・築浅",
+    "buildingAge": 1,
+    "imageFilename": "demo-jp-01-a.webp",
+    "imageGenerationPrompt": "Use case: photorealistic-natural. Create one landscape 4:3 exterior photograph for a Japanese rental listing, approximately 1024x768 pixels.\nEntirely invented property design demo-jp-01-a; never recreate an existing building or actual address. modern mid-to-high-rise rental building in a dense urban neighborhood, tile and concrete facade, modest glass accents.\nExactly 6 above-ground stories, compatible with a unit on floor 3. Structure: 鉄筋コンクリート造. Building age 1 years: new contemporary construction, clean crisp surfaces.\nFacade: soft sand with contrasting balcony edges. Balconies: rectangular solid parapets.\nRegional atmosphere only: Hokkaido: broad pavement, cold-climate windows, restrained conifer planting. Planting: sparse planters along the boundary.\nComposition: three-quarter view from the right; normal architectural photography, straight verticals, whole building visible with breathing room, facade centered for card crops. Daytime natural light, clear sky with gentle shadows.\nBelievable Japanese rental listing photograph, natural texture and minor imperfections, neutral colors. No people, no vehicles, no logos, no signs or lettering, no watermark, no landmark, no luxury mansion, no illustration, no CGI or architectural render appearance. Do not write the design ID in the image."
+  },
+  {
+    "propertyId": "demo-jp-04-b",
+    "propertyName": "【架空】コトリハイツ仙台 202号室",
+    "prefecture": "宮城県",
+    "city": "仙台市",
+    "propertyType": "コスト重視",
+    "buildingAge": 28,
+    "imageFilename": "demo-jp-04-b.webp",
+    "imageGenerationPrompt": "Use case: photorealistic-natural. Create one landscape 4:3 exterior photograph for a Japanese rental listing, approximately 1024x768 pixels.\nEntirely invented property design demo-jp-04-b; never recreate an existing building or actual address. ordinary economical two-story rental apartment, simple practical facade, modest fixtures, no luxury features.\nExactly 2 above-ground stories, compatible with a unit on floor 2. Structure: 鉄骨造. Building age 28 years: older building with visibly aged materials, gentle discoloration, maintained but not renovated to look new.\nFacade: warm ivory with a recessed central entrance. Balconies: recessed square balconies.\nRegional atmosphere only: Tohoku: cool temperate planting, practical snow-conscious entrance. Planting: small shrubs near the entrance.\nComposition: three-quarter view from the right; normal architectural photography, straight verticals, whole building visible with breathing room, facade centered for card crops. Daytime natural light, scattered white clouds and soft sunlight.\nBelievable Japanese rental listing photograph, natural texture and minor imperfections, neutral colors. No people, no vehicles, no logos, no signs or lettering, no watermark, no landmark, no luxury mansion, no illustration, no CGI or architectural render appearance. Do not write the design ID in the image."
+  },
+  {
+    "propertyId": "demo-jp-13-c",
+    "propertyName": "【架空】ソラネガーデン新宿 103号室",
+    "prefecture": "東京都",
+    "city": "新宿区",
+    "propertyType": "広さ・ファミリー",
+    "buildingAge": 16,
+    "imageFilename": "demo-jp-13-c.webp",
+    "imageGenerationPrompt": "Use case: photorealistic-natural. Create one landscape 4:3 exterior photograph for a Japanese rental listing, approximately 1024x768 pixels.\nEntirely invented property design demo-jp-13-c; never recreate an existing building or actual address. quiet low-to-mid-rise family rental building, usable balconies and planted residential surroundings.\nExactly 3 above-ground stories, compatible with a unit on floor 1. Structure: 鉄筋コンクリート造. Building age 16 years: ordinary established building, mildly faded surfaces and realistic weathering.\nFacade: cool gray with slender vertical accents. Balconies: alternating shallow balconies.\nRegional atmosphere only: Kanto: compact urban streets, close neighboring residential buildings. Planting: a small planted entrance strip.\nComposition: nearly frontal view from across the street; normal architectural photography, straight verticals, whole building visible with breathing room, facade centered for card crops. Daytime natural light, clear sky with gentle shadows.\nBelievable Japanese rental listing photograph, natural texture and minor imperfections, neutral colors. No people, no vehicles, no logos, no signs or lettering, no watermark, no landmark, no luxury mansion, no illustration, no CGI or architectural render appearance. Do not write the design ID in the image."
+  },
+  {
+    "propertyId": "demo-jp-20-d",
+    "propertyName": "【架空】ミライネワークス長野 304号室",
+    "prefecture": "長野県",
+    "city": "長野市",
+    "propertyType": "設備・在宅ワーク",
+    "buildingAge": 4,
+    "imageFilename": "demo-jp-20-d.webp",
+    "imageGenerationPrompt": "Use case: photorealistic-natural. Create one landscape 4:3 exterior photograph for a Japanese rental listing, approximately 1024x768 pixels.\nEntirely invented property design demo-jp-20-d; never recreate an existing building or actual address. contemporary well-equipped rental building in a quiet residential neighborhood, generous windows, good quality but realistic.\nExactly 5 above-ground stories, compatible with a unit on floor 3. Structure: 鉄筋コンクリート造. Building age 4 years: new contemporary construction, clean crisp surfaces.\nFacade: muted gray with slender vertical accents. Balconies: recessed square balconies.\nRegional atmosphere only: Chubu: mixed temperate planting, modest residential side street. Planting: a small planted entrance strip.\nComposition: nearly frontal view from across the street; normal architectural photography, straight verticals, whole building visible with breathing room, facade centered for card crops. Daytime natural light, soft overcast sky.\nBelievable Japanese rental listing photograph, natural texture and minor imperfections, neutral colors. No people, no vehicles, no logos, no signs or lettering, no watermark, no landmark, no luxury mansion, no illustration, no CGI or architectural render appearance. Do not write the design ID in the image."
+  },
+  {
+    "propertyId": "demo-jp-27-a",
+    "propertyName": "【架空】リュミナステラス大阪 301号室",
+    "prefecture": "大阪府",
+    "city": "大阪市",
+    "propertyType": "駅近・築浅",
+    "buildingAge": 3,
+    "imageFilename": "demo-jp-27-a.webp",
+    "imageGenerationPrompt": "Use case: photorealistic-natural. Create one landscape 4:3 exterior photograph for a Japanese rental listing, approximately 1024x768 pixels.\nEntirely invented property design demo-jp-27-a; never recreate an existing building or actual address. modern mid-to-high-rise rental building in a dense urban neighborhood, tile and concrete facade, modest glass accents.\nExactly 8 above-ground stories, compatible with a unit on floor 3. Structure: 鉄筋コンクリート造. Building age 3 years: new contemporary construction, clean crisp surfaces.\nFacade: muted gray with slender vertical accents. Balconies: rectangular solid parapets.\nRegional atmosphere only: Kansai: narrow residential street, compact lots and warm gray pavement. Planting: two modest street trees.\nComposition: three-quarter view from the right; normal architectural photography, straight verticals, whole building visible with breathing room, facade centered for card crops. Daytime natural light, pale blue sky with thin clouds.\nBelievable Japanese rental listing photograph, natural texture and minor imperfections, neutral colors. No people, no vehicles, no logos, no signs or lettering, no watermark, no landmark, no luxury mansion, no illustration, no CGI or architectural render appearance. Do not write the design ID in the image."
+  },
+  {
+    "propertyId": "demo-jp-34-b",
+    "propertyName": "【架空】コトリハイツ広島 202号室",
+    "prefecture": "広島県",
+    "city": "広島市",
+    "propertyType": "コスト重視",
+    "buildingAge": 24,
+    "imageFilename": "demo-jp-34-b.webp",
+    "imageGenerationPrompt": "Use case: photorealistic-natural. Create one landscape 4:3 exterior photograph for a Japanese rental listing, approximately 1024x768 pixels.\nEntirely invented property design demo-jp-34-b; never recreate an existing building or actual address. ordinary economical two-story rental apartment, simple practical facade, modest fixtures, no luxury features.\nExactly 2 above-ground stories, compatible with a unit on floor 2. Structure: 鉄骨造. Building age 24 years: ordinary established building, mildly faded surfaces and realistic weathering.\nFacade: muted gray with a simple corner entrance. Balconies: alternating shallow balconies.\nRegional atmosphere only: Chugoku: gently sloping residential street, small leafy shrubs. Planting: a small planted entrance strip.\nComposition: slightly off-center eye-level view; normal architectural photography, straight verticals, whole building visible with breathing room, facade centered for card crops. Daytime natural light, clear sky with gentle shadows.\nBelievable Japanese rental listing photograph, natural texture and minor imperfections, neutral colors. No people, no vehicles, no logos, no signs or lettering, no watermark, no landmark, no luxury mansion, no illustration, no CGI or architectural render appearance. Do not write the design ID in the image."
+  },
+  {
+    "propertyId": "demo-jp-40-c",
+    "propertyName": "【架空】ソラネガーデン博多 103号室",
+    "prefecture": "福岡県",
+    "city": "福岡市",
+    "propertyType": "広さ・ファミリー",
+    "buildingAge": 11,
+    "imageFilename": "demo-jp-40-c.webp",
+    "imageGenerationPrompt": "Use case: photorealistic-natural. Create one landscape 4:3 exterior photograph for a Japanese rental listing, approximately 1024x768 pixels.\nEntirely invented property design demo-jp-40-c; never recreate an existing building or actual address. quiet low-to-mid-rise family rental building, usable balconies and planted residential surroundings.\nExactly 3 above-ground stories, compatible with a unit on floor 1. Structure: 鉄骨造. Building age 11 years: relatively recent construction, subtle natural wear.\nFacade: light beige with subtle horizontal bands. Balconies: simple metal railings.\nRegional atmosphere only: Kyushu: warm-climate broadleaf greenery and light-colored pavement. Planting: small shrubs near the entrance.\nComposition: slightly off-center eye-level view; normal architectural photography, straight verticals, whole building visible with breathing room, facade centered for card crops. Daytime natural light, scattered white clouds and soft sunlight.\nBelievable Japanese rental listing photograph, natural texture and minor imperfections, neutral colors. No people, no vehicles, no logos, no signs or lettering, no watermark, no landmark, no luxury mansion, no illustration, no CGI or architectural render appearance. Do not write the design ID in the image."
+  },
+  {
+    "propertyId": "demo-jp-47-d",
+    "propertyName": "【架空】ミライネワークス県庁前 404号室",
+    "prefecture": "沖縄県",
+    "city": "那覇市",
+    "propertyType": "設備・在宅ワーク",
+    "buildingAge": 8,
+    "imageFilename": "demo-jp-47-d.webp",
+    "imageGenerationPrompt": "Use case: photorealistic-natural. Create one landscape 4:3 exterior photograph for a Japanese rental listing, approximately 1024x768 pixels.\nEntirely invented property design demo-jp-47-d; never recreate an existing building or actual address. contemporary well-equipped rental building in a quiet residential neighborhood, generous windows, good quality but realistic.\nExactly 5 above-ground stories, compatible with a unit on floor 4. Structure: 鉄筋コンクリート造. Building age 8 years: relatively recent construction, subtle natural wear.\nFacade: warm ivory with subtle horizontal bands. Balconies: rectangular solid parapets.\nRegional atmosphere only: Okinawa: subtropical planting, bright subtropical daylight; climate-appropriate details consistent with the specified building structure. Planting: a small planted entrance strip.\nComposition: slightly off-center eye-level view; normal architectural photography, straight verticals, whole building visible with breathing room, facade centered for card crops. Daytime natural light, soft overcast sky.\nBelievable Japanese rental listing photograph, natural texture and minor imperfections, neutral colors. No people, no vehicles, no logos, no signs or lettering, no watermark, no landmark, no luxury mansion, no illustration, no CGI or architectural render appearance. Do not write the design ID in the image."
+  }
+]

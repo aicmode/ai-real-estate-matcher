@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { PropertyImage } from "@/components/property/PropertyImage";
 import Link from "next/link";
 import { ArrowRight, Car, MapPin, PawPrint } from "lucide-react";
 
@@ -13,11 +13,12 @@ export function PropertyListCard({ property: p }: { property: Property }) {
       href={`/properties/${p.id}`}
       className="group flex flex-col overflow-hidden rounded-2xl border border-[var(--color-line)] bg-white shadow-card transition-colors hover:border-navy-300"
     >
-      <Image
+      <PropertyImage
         src={p.imageUrl}
         alt={`${p.name}の外観イメージ`}
-        width={800}
-        height={560}
+        width={1024}
+        height={768}
+        sizes="(max-width: 639px) calc(100vw - 32px), (max-width: 1023px) 46vw, 352px"
         className="h-40 w-full object-cover"
       />
       <div className="flex flex-1 flex-col p-4">

@@ -3,8 +3,8 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   images: {
     /*
-     * 物件画像はリポジトリ内で生成した自前の SVG (public/images/properties) のみを扱う。
-     * 外部入力の SVG は読み込まないため、CSP を併記したうえで SVG 配信を許可する。
+     * 物件写真は public/images/properties の圧縮済み WebP。
+     * 既存の自前 SVG を fallback として保持。外部 SVG は扱わない。
      */
     dangerouslyAllowSVG: true,
     contentDispositionType: "attachment",

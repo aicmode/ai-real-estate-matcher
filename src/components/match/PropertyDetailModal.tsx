@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { PropertyImage } from "@/components/property/PropertyImage";
 import Link from "next/link";
 import { Check, ExternalLink, TriangleAlert } from "lucide-react";
 
@@ -47,11 +47,12 @@ export function PropertyDetailModal({
       <div className="grid gap-6 lg:grid-cols-[1.15fr_1fr]">
         <div className="space-y-5">
           <div className="overflow-hidden rounded-xl border border-[var(--color-line)]">
-            <Image
+            <PropertyImage
               src={p.imageUrl}
               alt={`${p.name}の外観イメージ`}
-              width={800}
-              height={560}
+              width={1024}
+              height={768}
+              sizes="(max-width: 639px) calc(100vw - 64px), (max-width: 1023px) 88vw, 600px"
               className="h-48 w-full object-cover sm:h-60"
             />
           </div>

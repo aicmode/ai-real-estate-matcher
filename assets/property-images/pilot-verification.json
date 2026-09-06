@@ -1,0 +1,52 @@
+{
+  "count": 8,
+  "format": "webp",
+  "width": 1024,
+  "height": 768,
+  "totalBytes": 675424,
+  "averageBytes": 84428,
+  "minBytes": 66282,
+  "maxBytes": 116586,
+  "records": [
+    {
+      "propertyId": "demo-jp-01-a",
+      "bytes": 76568,
+      "sha256": "4509c4bca372af6ec7426670558c14a450ffa74393d02e6cf39e25cb9b82cb96"
+    },
+    {
+      "propertyId": "demo-jp-04-b",
+      "bytes": 82994,
+      "sha256": "fd4f168c34e440efeccc09afb2e9c17f26c4838031f61cc54983dfdf2476afb6"
+    },
+    {
+      "propertyId": "demo-jp-13-c",
+      "bytes": 92718,
+      "sha256": "cc90046e31637b37fe3ae64982f754fa47f18c41736ca5c51630670223132e72"
+    },
+    {
+      "propertyId": "demo-jp-20-d",
+      "bytes": 74668,
+      "sha256": "ce9b0f48786fa59e3e8f1f54b6318f967730f083178738006973eae28cd29387"
+    },
+    {
+      "propertyId": "demo-jp-27-a",
+      "bytes": 81944,
+      "sha256": "83a19cb20bd178a4e9bdd798af426a5a987057bdf77b4360929fd9b7f4111aa2"
+    },
+    {
+      "propertyId": "demo-jp-34-b",
+      "bytes": 83664,
+      "sha256": "09098d8654978a93dbf186999307281b3ab2ec46bbf36292b19620996f78519c"
+    },
+    {
+      "propertyId": "demo-jp-40-c",
+      "bytes": 116586,
+      "sha256": "3845d0579a54c97be24b2d17826b6ee90b78c362cdf429891424d22835f8b265"
+    },
+    {
+      "propertyId": "demo-jp-47-d",
+      "bytes": 66282,
+      "sha256": "35f0d7534a2505722a56ed4e31fe95a74dfe1f118d56762855a98a5cb80bcd43"
+    }
+  ]
+}

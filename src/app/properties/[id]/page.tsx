@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import { PropertyImage } from "@/components/property/PropertyImage";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Check, TriangleAlert } from "lucide-react";
@@ -53,13 +53,14 @@ export default async function PropertyDetailPage({ params }: PageProps) {
       <div className="grid gap-6 lg:grid-cols-[1.2fr_1fr]">
         <div className="space-y-6">
           <div className="overflow-hidden rounded-2xl border border-[var(--color-line)]">
-            <Image
+            <PropertyImage
               src={p.imageUrl}
               alt={`${p.name}の外観イメージ`}
-              width={800}
-              height={560}
+              width={1024}
+              height={768}
+              sizes="(max-width: 639px) calc(100vw - 32px), (max-width: 1023px) 94vw, 600px"
               className="h-56 w-full object-cover sm:h-72"
-              priority
+              preload
             />
           </div>
 

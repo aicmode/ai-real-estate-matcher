@@ -6,7 +6,7 @@ export function Footer() {
           AI Real Estate Matcher
         </p>
         <p className="mt-1 text-[12px] leading-relaxed text-[var(--color-ink-subtle)]">
-          自主制作のAI物件選定支援Webアプリです。掲載している物件情報はすべて架空のもので、実在の物件・価格・募集状況とは関係ありません。
+          自主制作のAI物件選定支援Webアプリです。掲載している物件情報はすべて架空のもので、実在の物件・価格・募集状況とは関係ありません。掲載画像は架空物件のイメージです。
         </p>
       </div>
     </footer>

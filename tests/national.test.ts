@@ -7,6 +7,7 @@ import { assertReplaceable, toSeedRecord } from "../prisma/seed-data/safety";
 import { isViableCandidate, runMatching, scoreProperty, resolveWeights } from "../src/lib/matching";
 import { DEFAULT_CRITERIA, DEMO_PRESETS, RENT_RANGE, matchCriteriaSchema } from "../src/lib/validation";
 import { toPropertyDTO } from "../src/lib/repositories/property-repository";
+import { resolvePropertyImage } from "../src/lib/property-images";
 import type { MatchCriteria } from "../src/types";
 import { POST } from "../src/app/api/match/route";
 
@@ -99,7 +100,7 @@ test("TEST-17: 全画像が既存12ファイルの範囲内", () => {
 });
 test("DTO変換と未知データの置換拒否", () => {
   const records = properties.map(p => ({ ...toSeedRecord(p), createdAt: new Date(0), updatedAt: new Date(0) }));
-  assert.deepEqual(records.map(toPropertyDTO), properties);
+  assert.deepEqual(records.map(toPropertyDTO), properties.map(p => ({ ...p, imageUrl: resolvePropertyImage(p.id, p.imageUrl) })));
   assert.doesNotThrow(() => assertReplaceable(records, properties));
   assert.throws(() => assertReplaceable([{ ...records[0], rent: 1 }, ...records.slice(1)], properties));
   assert.throws(() => assertReplaceable(records.slice(1), properties));

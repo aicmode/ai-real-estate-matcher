@@ -1,0 +1,340 @@
+{
+  "count": 34,
+  "expected": 188,
+  "missingCount": 154,
+  "format": "webp",
+  "width": 1024,
+  "height": 768,
+  "totalBytes": 2608608,
+  "averageBytes": 76724,
+  "minBytes": 55012,
+  "maxBytes": 116586,
+  "missing": [
+    "demo-jp-08-a",
+    "demo-jp-08-b",
+    "demo-jp-08-c",
+    "demo-jp-08-d",
+    "demo-jp-09-a",
+    "demo-jp-09-b",
+    "demo-jp-09-c",
+    "demo-jp-09-d",
+    "demo-jp-10-a",
+    "demo-jp-10-b",
+    "demo-jp-10-c",
+    "demo-jp-10-d",
+    "demo-jp-11-a",
+    "demo-jp-11-b",
+    "demo-jp-11-c",
+    "demo-jp-11-d",
+    "demo-jp-12-a",
+    "demo-jp-12-b",
+    "demo-jp-12-c",
+    "demo-jp-12-d",
+    "demo-jp-13-a",
+    "demo-jp-13-b",
+    "demo-jp-13-d",
+    "demo-jp-14-a",
+    "demo-jp-14-b",
+    "demo-jp-14-c",
+    "demo-jp-14-d",
+    "demo-jp-15-a",
+    "demo-jp-15-b",
+    "demo-jp-15-c",
+    "demo-jp-15-d",
+    "demo-jp-16-a",
+    "demo-jp-16-b",
+    "demo-jp-16-c",
+    "demo-jp-16-d",
+    "demo-jp-17-a",
+    "demo-jp-17-b",
+    "demo-jp-17-c",
+    "demo-jp-17-d",
+    "demo-jp-18-a",
+    "demo-jp-18-b",
+    "demo-jp-18-c",
+    "demo-jp-18-d",
+    "demo-jp-19-a",
+    "demo-jp-19-b",
+    "demo-jp-19-c",
+    "demo-jp-19-d",
+    "demo-jp-20-a",
+    "demo-jp-20-b",
+    "demo-jp-20-c",
+    "demo-jp-21-a",
+    "demo-jp-21-b",
+    "demo-jp-21-c",
+    "demo-jp-21-d",
+    "demo-jp-22-a",
+    "demo-jp-22-b",
+    "demo-jp-22-c",
+    "demo-jp-22-d",
+    "demo-jp-23-a",
+    "demo-jp-23-b",
+    "demo-jp-23-c",
+    "demo-jp-23-d",
+    "demo-jp-24-a",
+    "demo-jp-24-b",
+    "demo-jp-24-c",
+    "demo-jp-24-d",
+    "demo-jp-25-a",
+    "demo-jp-25-b",
+    "demo-jp-25-c",
+    "demo-jp-25-d",
+    "demo-jp-26-a",
+    "demo-jp-26-b",
+    "demo-jp-26-c",
+    "demo-jp-26-d",
+    "demo-jp-27-b",
+    "demo-jp-27-c",
+    "demo-jp-27-d",
+    "demo-jp-28-a",
+    "demo-jp-28-b",
+    "demo-jp-28-c",
+    "demo-jp-28-d",
+    "demo-jp-29-a",
+    "demo-jp-29-b",
+    "demo-jp-29-c",
+    "demo-jp-29-d",
+    "demo-jp-30-a",
+    "demo-jp-30-b",
+    "demo-jp-30-c",
+    "demo-jp-30-d",
+    "demo-jp-31-a",
+    "demo-jp-31-b",
+    "demo-jp-31-c",
+    "demo-jp-31-d",
+    "demo-jp-32-a",
+    "demo-jp-32-b",
+    "demo-jp-32-c",
+    "demo-jp-32-d",
+    "demo-jp-33-a",
+    "demo-jp-33-b",
+    "demo-jp-33-c",
+    "demo-jp-33-d",
+    "demo-jp-34-a",
+    "demo-jp-34-c",
+    "demo-jp-34-d",
+    "demo-jp-35-a",
+    "demo-jp-35-b",
+    "demo-jp-35-c",
+    "demo-jp-35-d",
+    "demo-jp-36-a",
+    "demo-jp-36-b",
+    "demo-jp-36-c",
+    "demo-jp-36-d",
+    "demo-jp-37-a",
+    "demo-jp-37-b",
+    "demo-jp-37-c",
+    "demo-jp-37-d",
+    "demo-jp-38-a",
+    "demo-jp-38-b",
+    "demo-jp-38-c",
+    "demo-jp-38-d",
+    "demo-jp-39-a",
+    "demo-jp-39-b",
+    "demo-jp-39-c",
+    "demo-jp-39-d",
+    "demo-jp-40-a",
+    "demo-jp-40-b",
+    "demo-jp-40-d",
+    "demo-jp-41-a",
+    "demo-jp-41-b",
+    "demo-jp-41-c",
+    "demo-jp-41-d",
+    "demo-jp-42-a",
+    "demo-jp-42-b",
+    "demo-jp-42-c",
+    "demo-jp-42-d",
+    "demo-jp-43-a",
+    "demo-jp-43-b",
+    "demo-jp-43-c",
+    "demo-jp-43-d",
+    "demo-jp-44-a",
+    "demo-jp-44-b",
+    "demo-jp-44-c",
+    "demo-jp-44-d",
+    "demo-jp-45-a",
+    "demo-jp-45-b",
+    "demo-jp-45-c",
+    "demo-jp-45-d",
+    "demo-jp-46-a",
+    "demo-jp-46-b",
+    "demo-jp-46-c",
+    "demo-jp-46-d",
+    "demo-jp-47-a",
+    "demo-jp-47-b",
+    "demo-jp-47-c"
+  ],
+  "records": [
+    {
+      "propertyId": "demo-jp-01-a",
+      "bytes": 76568,
+      "sha256": "4509c4bca372af6ec7426670558c14a450ffa74393d02e6cf39e25cb9b82cb96"
+    },
+    {
+      "propertyId": "demo-jp-01-b",
+      "bytes": 58970,
+      "sha256": "969e1ba5afb7ec1c8ddd0d79a6d135382ade2c84e20e214fc407b176f7e6c261"
+    },
+    {
+      "propertyId": "demo-jp-01-c",
+      "bytes": 74642,
+      "sha256": "2d8a59be9e288fa7246bc3c829696a1eedfa8d5c8c7c86690aab77021b109b38"
+    },
+    {
+      "propertyId": "demo-jp-01-d",
+      "bytes": 65526,
+      "sha256": "6b95748e1a4d431d9c5fb7b3bb76de037cf73ed33b6b500f7907755d725bccaf"
+    },
+    {
+      "propertyId": "demo-jp-02-a",
+      "bytes": 81028,
+      "sha256": "1cedc09a390d63c38ea03c01a98d9b35d68f944dd98a19a5faccd034f08e6228"
+    },
+    {
+      "propertyId": "demo-jp-02-b",
+      "bytes": 70506,
+      "sha256": "4239571c2be8ae754d5e8beda0b4900db77434c00fa24c200b54b203917af74d"
+    },
+    {
+      "propertyId": "demo-jp-02-c",
+      "bytes": 76406,
+      "sha256": "cc470b2bdf907681d266cc71cd8102cdf78ab82ae66b8340e1e5bc2f66b127f0"
+    },
+    {
+      "propertyId": "demo-jp-02-d",
+      "bytes": 62430,
+      "sha256": "222b24f906abea7e624e45bac9f819538c830299b08c96306c3aa5c5f130b793"
+    },
+    {
+      "propertyId": "demo-jp-03-a",
+      "bytes": 67874,
+      "sha256": "b9a95eff899a91a28470574d859359c9b3c8d0aafdf973d53e332aeb04b656e5"
+    },
+    {
+      "propertyId": "demo-jp-03-b",
+      "bytes": 84748,
+      "sha256": "d3031252284a9d0328feaef0952a5ddec7ecb3989c4ee987820592d5a3ffe446"
+    },
+    {
+      "propertyId": "demo-jp-03-c",
+      "bytes": 76766,
+      "sha256": "3bcafbaaa7bf06e1b80e5605f3b5a141731567ab23b4f73c069629611139e171"
+    },
+    {
+      "propertyId": "demo-jp-03-d",
+      "bytes": 74298,
+      "sha256": "aaab51223cdebbe51f8941770846084314a3a1aaefe261fa67b6269c67472ce5"
+    },
+    {
+      "propertyId": "demo-jp-04-a",
+      "bytes": 59670,
+      "sha256": "de3caf6f9ba69d032cc25a0add23c6967d7f833fc2569f6b0a4f98999ca124eb"
+    },
+    {
+      "propertyId": "demo-jp-04-b",
+      "bytes": 82994,
+      "sha256": "fd4f168c34e440efeccc09afb2e9c17f26c4838031f61cc54983dfdf2476afb6"
+    },
+    {
+      "propertyId": "demo-jp-04-c",
+      "bytes": 84070,
+      "sha256": "fcc67c650c2a80adf5d1448b347c835f6f590ab8062cda1ecfa7c26bb7c56df4"
+    },
+    {
+      "propertyId": "demo-jp-04-d",
+      "bytes": 69334,
+      "sha256": "1d1f1f31ee5e0949597bee0bae8b81c193a6555cea04b7e79e3da273bdadc8c3"
+    },
+    {
+      "propertyId": "demo-jp-05-a",
+      "bytes": 92090,
+      "sha256": "20ec82ca99ef7d796bbf307222a008f565694c5f5d2f6b487ba475032363ab6f"
+    },
+    {
+      "propertyId": "demo-jp-05-b",
+      "bytes": 55012,
+      "sha256": "568cf2260f8fe03399e94d7171082227cc0adbc0ad8d654cba796812b167c592"
+    },
+    {
+      "propertyId": "demo-jp-05-c",
+      "bytes": 74076,
+      "sha256": "664d1df72828e03573cc39bac049aee61d27d8ca656990fa72227c090e90c04b"
+    },
+    {
+      "propertyId": "demo-jp-05-d",
+      "bytes": 59586,
+      "sha256": "ef231a7ad9127f4084954840713164711b5695fddcf34c9ff017df2fe6613522"
+    },
+    {
+      "propertyId": "demo-jp-06-a",
+      "bytes": 68008,
+      "sha256": "4bd6633ab2e5de79a912d9186bee4cb06944b6e1e39752a6a9cc0ace6257662b"
+    },
+    {
+      "propertyId": "demo-jp-06-b",
+      "bytes": 93748,
+      "sha256": "343fb53b06d392caf9b9e6e916e7a8cee851564900d4f9ef75e3ad48c4af5de3"
+    },
+    {
+      "propertyId": "demo-jp-06-c",
+      "bytes": 107086,
+      "sha256": "b1afbef9d297c1735786bbe316daa3b262d4d900353580cf9943f61563a6f3dc"
+    },
+    {
+      "propertyId": "demo-jp-06-d",
+      "bytes": 58084,
+      "sha256": "fd01d1dd8562eaa4cfb4c2ee3957b5772fbf1a42897d19df89f639f6dbe48ce9"
+    },
+    {
+      "propertyId": "demo-jp-07-a",
+      "bytes": 74796,
+      "sha256": "d2c20054f6ea075ce6c9a45a027dee896abbd3636de17cd451f627dc786e643b"
+    },
+    {
+      "propertyId": "demo-jp-07-b",
+      "bytes": 90360,
+      "sha256": "da4d474d52eadaec0894ba153ab86d50fc1f27b5257031e48efc24b236d52dfe"
+    },
+    {
+      "propertyId": "demo-jp-07-c",
+      "bytes": 80594,
+      "sha256": "38ff4cbc622f66dd788d74042b90da258ab548875abe0dc90171090fbdf7b09b"
+    },
+    {
+      "propertyId": "demo-jp-07-d",
+      "bytes": 73476,
+      "sha256": "52aead3e3ae33c0aa7000fd669e490d711ecbd43320fb555efa311a32ea92395"
+    },
+    {
+      "propertyId": "demo-jp-13-c",
+      "bytes": 92718,
+      "sha256": "cc90046e31637b37fe3ae64982f754fa47f18c41736ca5c51630670223132e72"
+    },
+    {
+      "propertyId": "demo-jp-20-d",
+      "bytes": 74668,
+      "sha256": "ce9b0f48786fa59e3e8f1f54b6318f967730f083178738006973eae28cd29387"
+    },
+    {
+      "propertyId": "demo-jp-27-a",
+      "bytes": 81944,
+      "sha256": "83a19cb20bd178a4e9bdd798af426a5a987057bdf77b4360929fd9b7f4111aa2"
+    },
+    {
+      "propertyId": "demo-jp-34-b",
+      "bytes": 83664,
+      "sha256": "09098d8654978a93dbf186999307281b3ab2ec46bbf36292b19620996f78519c"
+    },
+    {
+      "propertyId": "demo-jp-40-c",
+      "bytes": 116586,
+      "sha256": "3845d0579a54c97be24b2d17826b6ee90b78c362cdf429891424d22835f8b265"
+    },
+    {
+      "propertyId": "demo-jp-47-d",
+      "bytes": 66282,
+      "sha256": "35f0d7534a2505722a56ed4e31fe95a74dfe1f118d56762855a98a5cb80bcd43"
+    }
+  ]
+}

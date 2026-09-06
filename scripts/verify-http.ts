@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import { generateProperties } from "../prisma/seed-data/generate";
 import { DEMO_PRESETS, DEFAULT_CRITERIA, RENT_RANGE } from "../src/lib/validation";
 import type { MatchResponse } from "../src/types";
+import { resolvePropertyImage } from "../src/lib/property-images";
 
 async function main() {
   const base = process.argv[2] ?? "http://localhost:3100";
@@ -39,7 +40,11 @@ async function main() {
   for (const p of properties) assert.ok(list.includes(`/properties/${p.id}`), p.id);
   // 直列で全詳細を検査し、DBへ過剰な同時負荷をかけない。
   for (const p of properties) assert.ok((await get(`/properties/${p.id}`)).includes(p.name), p.id);
-  for (const path of new Set(properties.map(p => p.imageUrl))) await get(path);
-  console.log(`HTTP verification passed: ${requests} requests, 188 detail pages, 12 images, 0 unexpected status`);
+  const imagePaths = new Set(properties.map(p => resolvePropertyImage(p.id, p.imageUrl)));
+  for (const path of imagePaths) {
+    await get(path);
+    if (path.endsWith(".webp")) await get(`/_next/image?url=${encodeURIComponent(path)}&w=640&q=75`);
+  }
+  console.log(`HTTP verification passed: ${requests} requests, 188 detail pages, ${imagePaths.size} images, 0 unexpected status`);
 }
 main().catch(() => { console.error("HTTP verification failed"); process.exitCode = 1; });

@@ -2,6 +2,7 @@ import type { Property as PrismaProperty } from "@prisma/client";
 
 import { prisma } from "@/lib/db";
 import type { Property } from "@/types";
+import { resolvePropertyImage } from "@/lib/property-images";
 
 /**
  * Prisma のレコードをアプリ用 DTO へ変換する。
@@ -38,7 +39,7 @@ export function toPropertyDTO(record: PrismaProperty): Property {
     cautionPoints: parseStringArray(record.cautionPoints),
     tags: parseStringArray(record.tags),
     description: record.description,
-    imageUrl: record.imageUrl,
+    imageUrl: resolvePropertyImage(record.id, record.imageUrl),
     latitude: record.latitude,
     longitude: record.longitude,
   };

@@ -1,6 +1,6 @@
 "use client";
 
-import Image from "next/image";
+import { PropertyImage } from "@/components/property/PropertyImage";
 import {
   ArrowRight,
   CalendarDays,
@@ -76,11 +76,14 @@ export function PropertyCard({
           featured ? "sm:w-64 lg:w-72" : "",
         )}
       >
-        <Image
+        <PropertyImage
           src={p.imageUrl}
           alt={`${p.name}の外観イメージ`}
-          width={800}
-          height={560}
+          width={1024}
+          height={768}
+          sizes={featured
+            ? "(max-width: 639px) calc(100vw - 32px), (max-width: 1023px) 256px, 288px"
+            : "(max-width: 639px) calc(100vw - 32px), (max-width: 1023px) 46vw, 352px"}
           className={cn(
             "h-40 w-full object-cover object-[center_65%]",
             featured && "sm:h-full sm:min-h-[220px]",
